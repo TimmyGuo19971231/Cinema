@@ -14,11 +14,12 @@ print("-=-=-=-=-=-=-=-=-=-=-=-=-=-="
       "\n~ Welcome to Pizzaz cinema ~"
       "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
       "\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n")
-if sys.argv[1] == "--show" and len(sys.argv) == 3:
-    show.main()
-elif sys.argv[1] == "--show" and len(sys.argv) != 3:
-    print("Sorry. This program does not recognise the time format entered.\n\nBye.")
-    sys.exit(1)
+if sys.argv[1] == "--show":
+    if len(sys.argv) == 3 and ":" in sys.argv[2]:
+        show.main()
+    else:
+        print("Sorry. This program does not recognise the time format entered.\n\nBye.")
+        sys.exit(1)
 elif sys.argv[1] == "--book":
     book.main()
 elif sys.argv[1] == "--group":
