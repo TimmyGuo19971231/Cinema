@@ -1,25 +1,27 @@
 import sys
-
 import book
 import group
 import show
 
 
-def get_files(filename) -> list:
-    with open(filename,"r",encoding="utf-8") as file:
-        return [i.rstrip("\n") for i in file.readlines()]
+def error_mes():
+    print("Sorry. This program does not recognise the switch options.\nBye.")
+    sys.exit(1)
 
 
-room1 = get_files("room1.txt")
-room2 = get_files("room2.txt")
-room3 = get_files("room3.txt")
-movie1 = get_files("movie1.txt")
-movie2 = get_files("movie2.txt")
-movie3 = get_files("movie3.txt")
-
-if sys.argv[2] == "--show" and len(sys.argv) == 4:
+print("-=-=-=-=-=-=-=-=-=-=-=-=-=-="
+      "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      "\n~ Welcome to Pizzaz cinema ~"
+      "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      "\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n")
+if sys.argv[1] == "--show" and len(sys.argv) == 3:
     show.main()
-elif sys.argv[2] == "--book":
+elif sys.argv[1] == "--show" and len(sys.argv) != 3:
+    print("Sorry. This program does not recognise the time format entered.\n\nBye.")
+    sys.exit(1)
+elif sys.argv[1] == "--book":
     book.main()
-elif sys.argv[2] == "--group":
+elif sys.argv[1] == "--group":
     group.main()
+else:
+    error_mes()
